@@ -46,8 +46,8 @@
     "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage/html",
     "php-cs-fixer": "tools/vendor/bin/php-cs-fixer fix --verbose",
     "phpstan": [
-      "tools/vendor/bin/phpstan analyse src -c phpstan.neon --level max --no-progress",
-      "tools/vendor/bin/phpstan analyse tests -c phpstan.neon --level 4 --no-progress"
+      "tools/vendor/bin/phpstan analyse src -c phpstan.neon --level max --no-progress --no-interaction",
+      "tools/vendor/bin/phpstan analyse tests -c phpstan.neon --level 4 --no-progress --no-interaction"
     ]
   },
   "config": {

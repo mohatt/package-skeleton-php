@@ -42,7 +42,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          composer install -d tools
+          composer install -d tools --no-interaction
           composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Lint source code
