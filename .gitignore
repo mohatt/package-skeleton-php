@@ -1,0 +1,23 @@
+# Logs
+logs/
+*.log
+
+# IDE stuff
+.idea/
+.vscode/
+
+# Generic files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Dependencies
+vendor/
+
+# Test stuff
+/coverage/
+.php-cs-fixer.cache
+.phpunit.result.cache
+
+# Project specific files
+#

@@ -1,0 +1,68 @@
+{
+  "name": "mohatt/package-skeleton-php",
+  "description": "A skeleton repository for PHP packages.",
+  "type": "library",
+  "homepage": "https://github.com/mohatt/package-skeleton-php",
+  "license": "MIT",
+  "keywords": ["skeleton", "template", "boilerplate", "starter"],
+  "authors": [
+    {
+      "name": "Mohamed Elkholy",
+      "email": "mohatt@pm.me",
+      "homepage": "https://mohatt.web.app",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "docs": "https://mohatt.github.io/package-skeleton-php",
+    "issues": "https://github.com/mohatt/package-skeleton-php/issues",
+    "rss": "https://github.com/mohatt/package-skeleton-php/releases.atom",
+    "source": "https://github.com/mohatt/package-skeleton-php.git",
+    "wiki": "https://github.com/mohatt/package-skeleton-php/wiki"
+  },
+  "require": {
+    "php": "^8.0"
+  },
+  "require-dev": {
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "mockery/mockery": "^1.4",
+    "phpstan/phpstan": "^0.12",
+    "phpstan/phpstan-mockery": "^0.12",
+    "phpunit/phpunit": "^9.5",
+    "mheap/phpunit-github-actions-printer": "^1.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "Mohatt\\Skeleton\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Mohatt\\Skeleton\\Test\\": "tests/"
+    }
+  },
+  "scripts": {
+    "lint": "@php-cs-fixer --dry-run --format=checkstyle",
+    "lint:fix": "@php-cs-fixer",
+    "test": ["@phpstan", "@phpunit"],
+    "test:ci": [
+      "@phpstan",
+      "@phpunit-coverage --coverage-clover coverage/coverage.xml --printer mheap\\GithubActionsReporter\\Printer"
+    ],
+    "test:coverage": [
+      "@phpstan",
+      "@phpunit-coverage --coverage-html coverage/html"
+    ],
+    "php-cs-fixer": "php-cs-fixer fix --verbose",
+    "phpunit": "phpunit",
+    "phpunit-coverage": "XDEBUG_MODE=coverage phpunit",
+    "phpstan": [
+      "phpstan analyse src -c phpstan.neon --level max --no-progress",
+      "phpstan analyse tests -c phpstan.neon --level 4 --no-progress"
+    ]
+  },
+  "config": {
+    "sort-packages": true
+  }
+}
+
