@@ -24,10 +24,7 @@
     "php": "^8.0"
   },
   "require-dev": {
-    "friendsofphp/php-cs-fixer": "^3.0",
     "mockery/mockery": "^1.4",
-    "phpstan/phpstan": "^0.12",
-    "phpstan/phpstan-mockery": "^0.12",
     "phpunit/phpunit": "^9.5",
     "mheap/phpunit-github-actions-printer": "^1.5"
   },
@@ -42,27 +39,20 @@
     }
   },
   "scripts": {
-    "lint": "@php-cs-fixer --dry-run --format=checkstyle",
-    "lint:fix": "@php-cs-fixer",
-    "test": ["@phpstan", "@phpunit"],
-    "test:ci": [
-      "@phpstan",
-      "@phpunit-coverage --coverage-clover coverage/coverage.xml --printer mheap\\GithubActionsReporter\\Printer"
-    ],
-    "test:coverage": [
-      "@phpstan",
-      "@phpunit-coverage --coverage-html coverage/html"
-    ],
-    "php-cs-fixer": "php-cs-fixer fix --verbose",
-    "phpunit": "phpunit",
-    "phpunit-coverage": "XDEBUG_MODE=coverage phpunit",
+    "lint": ["@phpstan", "@php-cs-fixer --dry-run --format=checkstyle"],
+    "lint:fix": ["@phpstan", "@php-cs-fixer"],
+    "test": "phpunit",
+    "test:ci": "XDEBUG_MODE=coverage phpunit --coverage-clover coverage/coverage.xml --printer mheap\\\\GithubActionsReporter\\\\Printer",
+    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage/html",
+    "php-cs-fixer": "tools/vendor/bin/php-cs-fixer fix --verbose",
     "phpstan": [
-      "phpstan analyse src -c phpstan.neon --level max --no-progress",
-      "phpstan analyse tests -c phpstan.neon --level 4 --no-progress"
+      "tools/vendor/bin/phpstan analyse src -c phpstan.neon --level max --no-progress",
+      "tools/vendor/bin/phpstan analyse tests -c phpstan.neon --level 4 --no-progress"
     ]
   },
   "config": {
     "sort-packages": true
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
-
