@@ -20,15 +20,11 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ### Security
 
+# [1.0.0] (2021-06-05)
 
-## [1.0.0] - YYYY-MM-DD
+### Features
 
-### Added
-
-* Feature A description
-* Feature B description
-* Feature C description
-
+* initial release ([bdad396](https://github.com/mohatt/package-skeleton-php/commit/bdad396815eb1b325da2e159ea0390db258e7065))
 
 [Unreleased]: https://github.com/mohatt/package-skeleton-php/compare/1.0.0...HEAD
 [1.0.0]: https://github.com/mohatt/package-skeleton-php/commits/1.0.0
