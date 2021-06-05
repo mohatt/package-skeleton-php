@@ -39,16 +39,18 @@
     }
   },
   "scripts": {
-    "lint": ["@phpstan", "@php-cs-fixer --dry-run --format=checkstyle"],
+    "lint": ["@phpstan", "@php-cs-fixer --dry-run"],
+    "lint:ci": [
+      "@composer run phpstan -- --error-format=checkstyle | tools/vendor/bin/cs2pr",
+      "@composer run php-cs-fixer -- --dry-run --format=checkstyle | tools/vendor/bin/cs2pr"
+    ],
     "lint:fix": ["@phpstan", "@php-cs-fixer"],
     "test": "phpunit",
-    "test:ci": "XDEBUG_MODE=coverage phpunit --coverage-clover coverage/coverage.xml --printer mheap\\\\GithubActionsReporter\\\\Printer",
-    "test:coverage": "XDEBUG_MODE=coverage phpunit --coverage-html coverage/html",
+    "test:ci": ["@env:xdebug", "phpunit --coverage-clover coverage/coverage.xml --printer mheap\\\\GithubActionsReporter\\\\Printer"],
+    "test:coverage": ["@env:xdebug", "phpunit --coverage-html coverage/html"],
+    "env:xdebug": "@putenv XDEBUG_MODE=coverage",
     "php-cs-fixer": "tools/vendor/bin/php-cs-fixer fix --verbose",
-    "phpstan": [
-      "tools/vendor/bin/phpstan analyse src -c phpstan.neon --level max --no-progress --no-interaction",
-      "tools/vendor/bin/phpstan analyse tests -c phpstan.neon --level 4 --no-progress --no-interaction"
-    ]
+    "phpstan": "tools/vendor/bin/phpstan analyse --no-progress --no-interaction"
   },
   "config": {
     "sort-packages": true
