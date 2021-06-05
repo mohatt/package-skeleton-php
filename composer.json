@@ -46,7 +46,7 @@
     ],
     "lint:fix": ["@phpstan", "@php-cs-fixer"],
     "test": "phpunit",
-    "test:ci": ["@env:xdebug", "phpunit --coverage-clover coverage/coverage.xml --printer \"mheap\\\\GithubActionsReporter\\\\Printer\""],
+    "test:ci": ["@env:xdebug", "phpunit --coverage-clover coverage/coverage.xml --printer \"mheap\\GithubActionsReporter\\Printer\""],
     "test:coverage": ["@env:xdebug", "phpunit --coverage-html coverage/html"],
     "env:xdebug": "@putenv XDEBUG_MODE=coverage",
     "php-cs-fixer": "tools/vendor/bin/php-cs-fixer fix --verbose",
