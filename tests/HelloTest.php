@@ -8,7 +8,7 @@ use Mohatt\Skeleton\Hello;
 
 /**
  * @internal
- * @coversNothing
+ * @covers \Mohatt\Skeleton\Hello
  */
 class HelloTest extends TestCase
 {
@@ -17,6 +17,6 @@ class HelloTest extends TestCase
         $object = \Mockery::mock(Hello::class);
         $object->shouldReceive('getHello')->passthru();
 
-        $this->assertSame('Hello, World!', $object->getHello());
+        self::assertSame('Hello, World!', $object->getHello());
     }
 }
